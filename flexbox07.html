@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>flex-BASIC/flex-ietem</title>
+    <title>flex-BASIC/flex-item-flex-shrink</title>
 
     <style>
         /*
@@ -42,7 +42,8 @@
             background-color: lightcoral;
             display: flex;
             flex-flow: row nowrap; /*eixo principal deitado*/
-           
+                    /*row=forma de linha */
+                    /*nowrap=nao vai quebrar,mesmo reduzindo*/
         }
         div.item{
             background-color: lightblue;
@@ -52,6 +53,31 @@
             flex-basis: 150px;/*flex-basis: 150px... todos os itens com esta medida*/
             flex-grow: 1;
             flex-shrink: 1;
+            /*
+            se for pra simplificar o:
+            flex-basis: 150px 
+            flex-grow: 1;
+            f0lex-shrink: 1; seria assim:
+            
+            flex: 0 (grow) 1 (shrink) 150 px (basic)
+
+            */
+        }
+        div#cx1{
+            flex-grow: 0;/*nao vai crescer*/
+            flex-shrink: 0;
+
+        }
+        div#cx2{
+            flex-grow: 1;/*este vai crescer*/
+                        /*mas se eu colocar: flex-grow: 4.. no primeiro colocar,flex-grow: 1
+                        ... estou dizendo que #Cx2 vai crescer em maior proporção 4 vezes em relação ao 1 #Cx1
+                         */
+            flex-shrink: 0;
+        }
+        div#cx3{
+            flex-grow: 0;/*nao vai crescer*/
+            flex-shrink: 0;
         }
 
 
@@ -60,9 +86,9 @@
 
 <body>
     <div class="conteiner">
-        <div class="item">a</div>
-        <div class="item">b</div>
-        <div class="item">c</div>
+        <div class="item" id="cx1">a</div>
+        <div class="item" id="cx2">b</div>
+        <div class="item" id="cx3">c</div>
        
 
     </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>flex-BASIC/flex-ietem</title>
+    <title>flex-BASIC/flex-shrink/grow-confg</title>
 
     <style>
         /*
@@ -42,16 +42,61 @@
             background-color: lightcoral;
             display: flex;
             flex-flow: row nowrap; /*eixo principal deitado*/
-           
+                    /*row=forma de linha */
+                    /*nowrap=nao vai quebrar,mesmo reduzindo*/
         }
         div.item{
             background-color: lightblue;
             border: 1px solid black;
             text-align: center;
             /*flex-basic:suto--- mesmo eu nao colocando ele ja esta inserido*/
-            flex-basis: 150px;/*flex-basis: 150px... todos os itens com esta medida*/
+            
             flex-grow: 1;
             flex-shrink: 1;
+            /*
+            se for pra simplificar o:
+            flex-basis: 150px 
+            flex-grow: 1;
+            f0lex-shrink: 1; seria assim:
+            
+            flex: 0 (grow) 1 (shrink) 150 px (basic)
+            
+            E RECOMENDADO QUE FAÇA DESTA MANEIRA
+
+            */
+            /*
+            SIMPLIFICAÇOES
+            flex: 0 1 auto; e o mesmo que - flex : initial;
+
+            flex 0 0 auto; 
+            auto: o tamanho atrelado ao tamanho do conteudo
+            e o mesmo que - flex: none;
+
+            flex 1 1 auto; [maximo de flexibilidade que um filho pode ter]
+            e o mesmo que - flex: auto;
+
+            flex 3; [aqui seria o valor de grow]
+            e o mesmo que - flex:3 1 auto;
+            .. se eu nao boto o valor no shirink, qual e o valor padrao dele? e 1
+            .. se eu nao boto o valor no basic,qual e o valor padrao dele? e auto
+
+
+
+            
+            */
+        }
+        div#cx1{
+            
+            flex: 1 0 150px;
+
+        }
+        div#cx2{
+            
+            flex: 1 1 150px;
+        }
+        div#cx3{
+            
+            flex: 1 8 150px;
         }
 
 
@@ -60,9 +105,9 @@
 
 <body>
     <div class="conteiner">
-        <div class="item">a</div>
-        <div class="item">b</div>
-        <div class="item">c</div>
+        <div class="item" id="cx1">a</div>
+        <div class="item" id="cx2">b</div>
+        <div class="item" id="cx3">c</div>
        
 
     </div>
